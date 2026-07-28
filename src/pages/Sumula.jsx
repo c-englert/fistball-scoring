@@ -56,6 +56,7 @@ export default function Sumula() {
     <div className="app">
       <header className="topbar">
         <button className="iconbtn" onClick={() => nav("/")}>‹ Games</button>
+        <div className="brand-logo sm"><img src={import.meta.env.BASE_URL + "ifa-mark.png"} alt="IFA" /></div>
         <div className="spacer" />
         <div style={{ textAlign: "right" }}>
           <div className="title">#{draft.info.nr} · {short(draft.teamA.name)} vs {short(draft.teamB.name)}</div>

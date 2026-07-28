@@ -92,4 +92,19 @@ export const SEED_MATCHES = [
     bestOf: 5, round: "Qualification round", category: "U18 M Gold",
     teamA: team("Switzerland - U18 M Gold"), teamB: team("Germany - U18 M Gold"),
   },
+  {
+    id: "m35", nr: 35, date: "24/07/26", time: "11:00", court: "1",
+    bestOf: 5, round: "Qualification round", category: "U18 M Gold",
+    teamA: team("Germany - U18 M Gold"), teamB: team("Switzerland - U18 M Gold"),
+  },
+  {
+    id: "m37", nr: 37, date: "24/07/26", time: "13:15", court: "2",
+    bestOf: 5, round: "Qualification round", category: "U18 Men",
+    teamA: team("Brazil - U18 Men"), teamB: team("Austria - U18 Men"),
+  },
+  {
+    id: "m52", nr: 52, date: "25/07/26", time: "10:15", court: "1",
+    bestOf: 5, round: "4tr finals - 1", category: "U18 Men",
+    teamA: team("Germany - U18 M Gold"), teamB: team("Austria - U18 Men"),
+  },
 ];
