@@ -132,14 +132,17 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
 .team-tab.active { background: var(--brand); color: #fff; border-color: var(--brand); }
 
 .player {
-  display: flex; align-items: center; gap: 10px; padding: 10px 6px; border-bottom: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 8px 12px; padding: 10px 6px; border-bottom: 1px solid var(--line);
 }
 .player:last-child { border-bottom: none; }
+.player-id { display: flex; align-items: center; gap: 10px; flex: 1 1 190px; min-width: 0; }
+.player-controls { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .pnr { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 10px; background: #eef0f6; font-weight: 800; }
 .pname { flex: 1; min-width: 0; }
-.pname .sur { font-weight: 700; }
-.pname .giv { color: var(--muted); font-size: 14px; }
-.prole { flex: 1; font-weight: 700; color: var(--brand); }
+.pname .sur { font-weight: 700; overflow: hidden; text-overflow: ellipsis; }
+.pname .giv { color: var(--muted); font-size: 14px; overflow: hidden; text-overflow: ellipsis; }
+.prole { flex: 1; min-width: 0; font-weight: 700; color: var(--brand); }
 
 .chip {
   min-width: 46px; height: 46px; padding: 0 10px; border-radius: 10px; border: 1px solid var(--line);

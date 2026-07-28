@@ -157,19 +157,23 @@ function LineupSection({ d, team, setTeam, update }) {
         <h2>Players — tap C (captain), OC (on court), or a card</h2>
         {t.players.map((p, i) => (
           <div className="player" key={i}>
-            <div className="pnr">{p.nr}</div>
-            <div className="pname">
-              <div className="sur">{p.name}</div>
-              <div className="giv">{p.first}</div>
+            <div className="player-id">
+              <div className="pnr">{p.nr}</div>
+              <div className="pname">
+                <div className="sur">{p.name}</div>
+                <div className="giv">{p.first}</div>
+              </div>
             </div>
-            <button className={`chip cap ${p.captain ? "on" : ""}`} onClick={() => toggleCaptain(i)}>C</button>
-            <button className={`chip oc ${p.onCourt ? "on" : ""}`} onClick={() => toggleOC(i)}>OC</button>
-            <div className="card-chips">
-              {["y", "yr", "r"].map((k) => (
-                <button key={k} className={`chip ${k} ${p.cards[k] ? "on" : ""}`} onClick={() => toggleCard("players", i, k)}>
-                  {k.toUpperCase()}
-                </button>
-              ))}
+            <div className="player-controls">
+              <button className={`chip cap ${p.captain ? "on" : ""}`} onClick={() => toggleCaptain(i)}>C</button>
+              <button className={`chip oc ${p.onCourt ? "on" : ""}`} onClick={() => toggleOC(i)}>OC</button>
+              <div className="card-chips">
+                {["y", "yr", "r"].map((k) => (
+                  <button key={k} className={`chip ${k} ${p.cards[k] ? "on" : ""}`} onClick={() => toggleCard("players", i, k)}>
+                    {k.toUpperCase()}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         ))}
@@ -177,17 +181,21 @@ function LineupSection({ d, team, setTeam, update }) {
         {t.staff.length > 0 && <div className="subhead">Staff</div>}
         {t.staff.map((s, i) => (
           <div className="player" key={i}>
-            <div className="prole">{s.role}</div>
-            <div className="pname">
-              <div className="sur">{s.name}</div>
-              <div className="giv">{s.first}</div>
+            <div className="player-id">
+              <div className="prole">{s.role}</div>
+              <div className="pname">
+                <div className="sur">{s.name}</div>
+                <div className="giv">{s.first}</div>
+              </div>
             </div>
-            <div className="card-chips">
-              {["y", "yr", "r"].map((k) => (
-                <button key={k} className={`chip ${k} ${s.cards[k] ? "on" : ""}`} onClick={() => toggleCard("staff", i, k)}>
-                  {k.toUpperCase()}
-                </button>
-              ))}
+            <div className="player-controls">
+              <div className="card-chips">
+                {["y", "yr", "r"].map((k) => (
+                  <button key={k} className={`chip ${k} ${s.cards[k] ? "on" : ""}`} onClick={() => toggleCard("staff", i, k)}>
+                    {k.toUpperCase()}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         ))}
