@@ -243,9 +243,11 @@ function ScoreSection({ d, scoring, update }) {
       <div className="set-pills">
         {d.sets.map((s, i) => {
           const sc = setScore(s);
+          const played = sc.a + sc.b > 0;
           return (
-            <button key={i} className={`step ${i === cur ? "active" : ""}`} onClick={() => setCur(i)}>
-              Set {i + 1}{sc.a + sc.b ? ` · ${sc.a}:${sc.b}` : ""}
+            <button key={i} className={`set-pill ${i === cur ? "active" : ""}`} onClick={() => setCur(i)}>
+              <span className="sp-label">Set {i + 1}</span>
+              <span className="sp-score">{played ? `${sc.a}:${sc.b}` : "–"}</span>
             </button>
           );
         })}

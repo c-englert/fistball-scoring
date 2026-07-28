@@ -159,8 +159,18 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
 .subhead { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin: 16px 0 6px; }
 
 /* ---------- Score: rally-by-rally point record ---------- */
-.set-pills { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-bottom: 14px; }
+.set-pills { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-bottom: 14px; padding-bottom: 2px; }
 .set-pills::-webkit-scrollbar { display: none; }
+.set-pill {
+  flex: none; min-width: 68px; border: 1px solid var(--line); background: var(--surface);
+  border-radius: 14px; padding: 8px 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+}
+.set-pill.active { background: var(--brand); border-color: var(--brand); }
+.sp-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--muted); }
+.sp-score { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--text); }
+.set-pill.active .sp-label { color: rgba(255,255,255,0.75); }
+.set-pill.active .sp-score { color: #fff; }
 .score-big { text-align: center; font-size: 44px; font-weight: 800; font-variant-numeric: tabular-nums; margin: 4px 0 14px; }
 .score-big .colon { color: var(--muted); margin: 0 10px; }
 .score-big .lead { color: var(--win); }
