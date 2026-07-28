@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { pdf } from "@react-pdf/renderer";
 import { getOrInitDraft, saveDraft, submitDraft } from "../store.js";
+import SumulaPDF from "../pdf/SumulaPDF.jsx";
 
 const SECTIONS = [
   ["info", "Info"],
@@ -34,6 +36,18 @@ export default function Sumula() {
 
   const scoring = useMemo(() => computeScore(draft), [draft]);
 
+  async function downloadPDF() {
+    const blob = await pdf(<SumulaPDF draft={draft} />).toBlob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `sumula-${draft.info.nr}-${short(draft.teamA.name)}-vs-${short(draft.teamB.name)}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+
   if (!draft) return <div className="empty">Loading…</div>;
 
   const submitted = !!draft.submittedAt;
@@ -64,7 +78,7 @@ export default function Sumula() {
         )}
         {section === "score" && <ScoreSection d={draft} scoring={scoring} update={update} />}
         {section === "refs" && <RefsSection d={draft} update={update} />}
-        {section === "finish" && <FinishSection d={draft} scoring={scoring} update={update} />}
+        {section === "finish" && <FinishSection d={draft} scoring={scoring} update={update} onPdf={downloadPDF} />}
       </div>
 
       <div className="bottombar">
@@ -328,7 +342,7 @@ function RefsSection({ d, update }) {
   );
 }
 
-function FinishSection({ d, scoring, update }) {
+function FinishSection({ d, scoring, update, onPdf }) {
   const sign = (k) => update((n) => (n.signatures[k] = !n.signatures[k]));
   return (
     <>
@@ -367,6 +381,14 @@ function FinishSection({ d, scoring, update }) {
             </button>
           </div>
         ))}
+      </div>
+
+      <div className="card">
+        <h2>Game report PDF</h2>
+        <p style={{ color: "var(--muted)", marginTop: 0 }}>
+          Generates the full game report (súmula) in the tournament layout — to save, print or e-mail.
+        </p>
+        <button className="btn primary" style={{ width: "100%" }} onClick={onPdf}>⬇ Download PDF</button>
       </div>
     </>
   );

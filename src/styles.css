@@ -50,6 +50,20 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
 
 .content { padding: 16px; padding-bottom: 120px; }
 
+/* ---------- Court selector ---------- */
+.court-bar {
+  position: sticky; top: 0; z-index: 15; background: var(--bg);
+  display: flex; align-items: center; gap: 8px; padding: 12px 16px;
+  overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--line);
+}
+.court-bar::-webkit-scrollbar { display: none; }
+.court-label { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); flex: none; }
+.court-pill {
+  flex: none; min-height: 48px; padding: 0 18px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--muted); font-weight: 800;
+}
+.court-pill.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
 /* ---------- Match list ---------- */
 .match-card {
   background: var(--surface); border: 1px solid var(--line);
